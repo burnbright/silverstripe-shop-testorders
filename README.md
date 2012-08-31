@@ -5,25 +5,22 @@ for the purposes of seeing if everything is working.
 
 To place a test order:
 
- * Visit the orders Admin, and click the 'start test order' link.
+ * Visit admin/orders/starttestorder
  * Proceed with order as normal
  
- Orders placed in test mode will be flagged as test ($order->Test).
- Payments will always use test mode, so actual money does not exchange hands.
+Orders placed in test mode will be flagged as test ($order->Test).
+Payments will always use test mode, so actual money does not exchange hands.
  
- To reconfigure payement settings on test orders, you currently need to use a hacky approach
- of decorating order like so:
+To reconfigure payement settings on test orders, you currently need to use a hacky approach
+of decorating order like so:
  
-	 <?php
-	
+	<?php
 	class OrderDecorator extends DataObjectDecorator{
 
 		function onPlaceOrder(){
 			
 			if($this->owner->Test){
-			
 				//change available payment types, and settings etc here
-				
 			}
 			
 		}
